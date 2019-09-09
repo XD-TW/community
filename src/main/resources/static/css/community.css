@@ -1,0 +1,168 @@
+body {
+    /*background-color: #efefef;*/
+    /*backgroup*/
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+.font-body {
+    font-family: Cambria, "Helvetica Neue", Helvetica, Arial,
+    "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei",
+    "Microsoft Yahei", sans-serif, -apple-system;
+}
+
+.main {
+    background-color: white;
+    margin-left: 160px;
+    margin-right: 160px;
+    margin-bottom: 30px;
+    margin-top: 45px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 13px;
+}
+
+.btn-publish {
+    float: right;
+    margin-bottom: 15px;
+}
+
+.media-object {
+    width: 40px;
+    height: 40px;
+!important;
+
+}
+
+.media-body {
+    padding-top: 13px;
+}
+
+.comment-body {
+    padding-top: 5px;
+}
+
+.text-desc {
+    font-size: 13px;
+    font-weight: normal;
+    color: #999;
+    /*candara*/
+    font-family: Cambria, "Helvetica Neue", Helvetica, Arial,
+    "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei",
+    "Microsoft Yahei", sans-serif, -apple-system;
+}
+.text-div{
+    font-size: 13px;
+    font-weight: normal;
+    /*candara*/
+    font-family: Cambria, "Helvetica Neue", Helvetica, Arial,
+    "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei",
+    "Microsoft Yahei", sans-serif, -apple-system;
+}
+
+.profile .section {
+    margin-top: 20px;
+}
+
+.community-menu {
+    color: #999;
+    font-size: 13px;
+    margin-bottom: 15px;
+    display: block;
+
+}
+
+.jumbotron {
+    margin-left: 525px;
+    margin-top: 170px;
+}
+
+.comment {
+    margin: 10px 0 0 0;
+}
+
+.comment-btn {
+    float: right;
+    margin-bottom: 10px;
+}
+
+.comment-sp {
+    margin-top: 0;
+}
+
+.comment-tp {
+    margin-bottom: 0;
+}
+
+.menu {
+    color: #999999;
+    margin-top: 5px;
+}
+
+.menu .icon {
+    font-size: 15px;
+    margin-right: 6px;
+    cursor: pointer;
+}
+
+.menu .icon:hover {
+    color: #499ef3;
+}
+
+
+.index-padding-top {
+    padding-top: 0px;
+}
+
+.comments {
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.btns{
+    width: 100px;
+    height: 30px;
+    /*position: absolute;*/
+    float: right;
+    top: 0;
+    padding: 4px 15px;
+    font-size: 13px;
+    color: #fff;
+    border-radius: 4px;
+    text-align: center;
+    min-width: 60px;
+    vertical-align: top;
+    cursor: pointer;
+    background-color: #00a1d6;
+    border: 1px solid #00a1d6;
+    transition: .1s;
+    user-select: none;
+    outline: none;
+    margin:10px 0 10px 0;
+}
+.btns:hover{
+    background: #1890ff;
+}
+
+.comment-title{
+    margin-top: 30px;
+}
+
+.comment-content-name{
+    margin-top: -10px;
+    margin-bottom: 5px;
+}
+
+.comment-span{
+    font-size: 13px;
+    font-weight: normal;
+    /*candara*/
+    font-family: Cambria, "Helvetica Neue", Helvetica, Arial,
+    "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei",
+    "Microsoft Yahei", sans-serif, -apple-system;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    color: #333333;
+}
