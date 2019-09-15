@@ -27,7 +27,7 @@ public class PaginationDTO {
         pages.add(page);
         for (int i = 1; i <= 3; i++) {
             if (page - i > 0) {
-                pages.add(0,page - i);
+                pages.add(0, page - i);
             }
             if (page + i <= totalPage) {
                 pages.add(page + i);

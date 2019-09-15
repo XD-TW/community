@@ -34,7 +34,7 @@ function comment2target(targetId, type, content) {
                     var isAccepted = confirm(response.message);
                     if (isAccepted) {
                         window.open("https://github.com/login/oauth/authorize?client_id=27a84e82d380d522d7ea&redirect_uri=http://localhost:8887/callback&scope=user&state=1")
-                        window.localStorage.setItem("closable",true);
+                        window.localStorage.setItem("closable", true);
                     }
                 } else {
                     alert(response.message);
@@ -75,33 +75,33 @@ function collapseComments(e) {
         } else {
             $.getJSON("/comment/" + id, function (data) {
                 $.each(data.data, function (index, comment) {
-                    var mediaLeftElement = $("<div/>",{
-                        "class":"media-left"
-                    }).append($("<img/>",{
-                        "class":"media-object img-rounded",
-                        "src":comment.user.avatarUrl
+                    var mediaLeftElement = $("<div/>", {
+                        "class": "media-left"
+                    }).append($("<img/>", {
+                        "class": "media-object img-rounded",
+                        "src": comment.user.avatarUrl
                     }));
 
-                    var mediaBodyElement =$("<div/>",{
-                        "class":"media-body"
-                    }).append($("<h5/>",{
-                        "class":"media-heading comment-span",
-                        "html":comment.user.name
-                    })).append($("<div/>",{
-                        "html":comment.content
-                    })).append($("<div/>",{
-                        "class":"menu"
-                    }).append($("<span/>",{
-                        "class":"pull-right",
-                        "html":moment(comment.gmtCreate).format("YYYY-MM-DD")
+                    var mediaBodyElement = $("<div/>", {
+                        "class": "media-body"
+                    }).append($("<h5/>", {
+                        "class": "media-heading comment-span",
+                        "html": comment.user.name
+                    })).append($("<div/>", {
+                        "html": comment.content
+                    })).append($("<div/>", {
+                        "class": "menu"
+                    }).append($("<span/>", {
+                        "class": "pull-right",
+                        "html": moment(comment.gmtCreate).format("YYYY-MM-DD")
                     })));
 
-                    var mediaElement = $("<div/>",{
-                        "class":"media"
+                    var mediaElement = $("<div/>", {
+                        "class": "media"
                     }).append(mediaLeftElement).append(mediaBodyElement);
 
-                    var commentElement = $("<div/>",{
-                        "class":"col-lg-12 col-md-12 col-sm-12 col-xs-12 comments"
+                    var commentElement = $("<div/>", {
+                        "class": "col-lg-12 col-md-12 col-sm-12 col-xs-12 comments"
                     }).append(mediaElement);
 
                     subCommentContainer.prepend(commentElement);
@@ -118,7 +118,22 @@ function collapseComments(e) {
         }
     }
 }
-//
+
+
+function selectTag(value) {
+    var previous = $("#tag").val();
+    if (previous.indexOf(value) == -1) {
+        if (previous) {
+            $("#tag").val(previous + ',' + value);
+        } else {
+            $("#tag").val(value)
+        }
+    }
+
+
+}
+
+
 // function showSelectTag() {
 //     $("#select-tag").show();
 // }

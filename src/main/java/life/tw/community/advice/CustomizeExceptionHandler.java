@@ -20,13 +20,13 @@ public class CustomizeExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     ModelAndView handle(Throwable e, Model model, HttpServletRequest request, HttpServletResponse response) {
-        String contentType =request.getContentType();
-        if ("application/json".equals(contentType)){
+        String contentType = request.getContentType();
+        if ("application/json".equals(contentType)) {
             //返回json
             ResultDTO resultDTO;
-            if(e instanceof CustomizeException){
+            if (e instanceof CustomizeException) {
                 resultDTO = ResultDTO.errorOf((CustomizeException) e);
-            }else {
+            } else {
                 resultDTO = ResultDTO.errorOf(CustomizeErrorCode.SYS_ERROR);
             }
 
@@ -41,14 +41,14 @@ public class CustomizeExceptionHandler {
 
             }
             return null;
-        }else {
+        } else {
             //返回错误页面
-            if(e instanceof CustomizeException){
-                model.addAttribute("message",e.getMessage());
-            }else {
-                model.addAttribute("message","服务器冒烟啦，要不稍后试试~");
+            if (e instanceof CustomizeException) {
+                model.addAttribute("message", e.getMessage());
+            } else {
+                model.addAttribute("message", "服务器冒烟啦，要不稍后试试~");
             }
-            return new ModelAndView("errors");
+            return new ModelAndView("error");
         }
     }
 }

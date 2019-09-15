@@ -3,7 +3,7 @@ package life.tw.community.dto;
 import lombok.Data;
 
 @Data
-public class CommentCreateDTO  {
+public class CommentCreateDTO {
 
 
     private Long parentId;

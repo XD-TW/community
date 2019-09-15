@@ -35,9 +35,9 @@ public class AuthorizeController {
 
 
     @GetMapping("/callback")
-    public String callback(@RequestParam(name="code") String code,
-                           @RequestParam(name="state") String state,
-                           HttpServletResponse response){
+    public String callback(@RequestParam(name = "code") String code,
+                           @RequestParam(name = "state") String state,
+                           HttpServletResponse response) {
         AccessTokenDTO accessTokenDTO = new AccessTokenDTO();
         accessTokenDTO.setCode(code);
         accessTokenDTO.setRedirect_uri(redirectUri);
@@ -46,29 +46,29 @@ public class AuthorizeController {
         accessTokenDTO.setClient_secret(clientSecret);
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);
         GithubUser githubUser = githubProvider.getUser(accessToken);
-        if(githubUser != null){
-                User user = new User();
-                String token = UUID.randomUUID().toString();
-                user.setToken(token);
-                user.setName(githubUser.getName());
-                user.setAccountId(String.valueOf(githubUser.getId()));
-                user.setAvatarUrl(githubUser.getAvatarUrl());
-                userService.createOrUpdate(user);
-                response.addCookie(new Cookie("token",token));
-                return "redirect:/";
-        }else{
+        if (githubUser != null) {
+            User user = new User();
+            String token = UUID.randomUUID().toString();
+            user.setToken(token);
+            user.setName(githubUser.getName());
+            user.setAccountId(String.valueOf(githubUser.getId()));
+            user.setAvatarUrl(githubUser.getAvatarUrl());
+            userService.createOrUpdate(user);
+            response.addCookie(new Cookie("token", token));
+            return "redirect:/";
+        } else {
             //登陆失败，重新登陆
             return "redirect:/";
         }
     }
 
     @GetMapping("/logout")
-    public String logout(HttpServletRequest request,HttpServletResponse response){
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
         //清除session
         request.getSession().removeAttribute("user");
         //清楚cookie
         //删除名称为 token 的cookie
-        Cookie cookie = new Cookie("token",null);
+        Cookie cookie = new Cookie("token", null);
         //设置时间。为零表示立即删除
         cookie.setMaxAge(0);
         //设置为项目所有睦路均有效

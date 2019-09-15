@@ -27,15 +27,14 @@ public class PublishController {
 
 
     @GetMapping("/publish/{id}")
-    public String edit(@PathVariable(name = "id")Long id,Model model){
+    public String edit(@PathVariable(name = "id") Long id, Model model) {
         QuestionDTO question = questionService.getById(id);
         model.addAttribute("title", question.getTitle());
         model.addAttribute("description", question.getDescription());
         model.addAttribute("tag", question.getTag());
-        model.addAttribute("id",question.getId());
+        model.addAttribute("id", question.getId());
         return "publish";
     }
-
 
 
     @GetMapping("/publish")
@@ -45,10 +44,10 @@ public class PublishController {
 
 
     @PostMapping("/publish")
-    public String doPublish(@RequestParam(value = "title",required = false) String title,
-                            @RequestParam(value = "description",required = false) String description,
-                            @RequestParam(value = "tag",required = false) String tag,
-                            @RequestParam(value = "id",required = false)Long id,
+    public String doPublish(@RequestParam(value = "title", required = false) String title,
+                            @RequestParam(value = "description", required = false) String description,
+                            @RequestParam(value = "tag", required = false) String tag,
+                            @RequestParam(value = "id", required = false) Long id,
                             HttpServletRequest request, Model model) {
         model.addAttribute("title", title);
         model.addAttribute("description", description);
@@ -67,7 +66,7 @@ public class PublishController {
         }
 
 
-        User user = (User)request.getSession().getAttribute("user");
+        User user = (User) request.getSession().getAttribute("user");
 
         if (user == null) {
             model.addAttribute("error", "用户未登陆");

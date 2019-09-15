@@ -11,7 +11,7 @@ public class ResultDTO<X> {
     private String message;
     private X data;
 
-    private static ResultDTO errorOf(Integer code, String message){
+    private static ResultDTO errorOf(Integer code, String message) {
         ResultDTO resultDTO = new ResultDTO();
         resultDTO.setCode(code);
         resultDTO.setMessage(message);
@@ -20,10 +20,10 @@ public class ResultDTO<X> {
 
 
     public static ResultDTO errorOf(CustomizeErrorCode noLogin) {
-        return errorOf(noLogin.getCode(),noLogin.getMessage());
+        return errorOf(noLogin.getCode(), noLogin.getMessage());
     }
 
-    public static ResultDTO okOf(){
+    public static ResultDTO okOf() {
         ResultDTO resultDTO = new ResultDTO();
         resultDTO.setCode(200);
         resultDTO.setMessage("请求成功");
@@ -31,10 +31,10 @@ public class ResultDTO<X> {
     }
 
     public static ResultDTO errorOf(CustomizeException e) {
-        return errorOf(e.getCode(),e.getMessage());
+        return errorOf(e.getCode(), e.getMessage());
     }
 
-    public static <X> ResultDTO okOf(X x){
+    public static <X> ResultDTO okOf(X x) {
         ResultDTO resultDTO = new ResultDTO();
         resultDTO.setCode(200);
         resultDTO.setMessage("请求成功");

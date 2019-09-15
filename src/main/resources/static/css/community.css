@@ -52,7 +52,8 @@ body {
     "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei",
     "Microsoft Yahei", sans-serif, -apple-system;
 }
-.text-div{
+
+.text-div {
     font-size: 13px;
     font-weight: normal;
     /*candara*/
@@ -121,7 +122,7 @@ body {
     border-bottom: 1px solid #eeeeee;
 }
 
-.btns{
+.btns {
     width: 100px;
     height: 30px;
     /*position: absolute;*/
@@ -140,22 +141,23 @@ body {
     transition: .1s;
     user-select: none;
     outline: none;
-    margin:10px 0 10px 0;
+    margin: 10px 0 10px 0;
 }
-.btns:hover{
+
+.btns:hover {
     background: #1890ff;
 }
 
-.comment-title{
+.comment-title {
     margin-top: 30px;
 }
 
-.comment-content-name{
+.comment-content-name {
     margin-top: -10px;
     margin-bottom: 5px;
 }
 
-.comment-span{
+.comment-span {
     font-size: 13px;
     font-weight: normal;
     /*candara*/
@@ -167,6 +169,26 @@ body {
     color: #333333;
 }
 
-.question-tag{
+.question-tag {
+    margin-right: 5px;
+}
+
+.question-related {
+    line-height: 20px;
+    font-size: 13px;
+    list-style: none;
+    padding-left: 0;
+    text-decoration: none;
+}
+
+.question-related a:hover {
+    color: #5bc0de;
+}
+
+.glyphicon-right {
+    margin-right: 5px;
+}
+
+.glyphicon-right:before {
     margin-right: 5px;
 }

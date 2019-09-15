@@ -24,14 +24,14 @@ public class CustomizeErrorController implements ErrorController {
                                   Model model) {
         HttpStatus status = getStatus(request);
 
-        if(status.is4xxClientError()){
-            model.addAttribute("message","你的请求错了,要不换个姿势?");
+        if (status.is4xxClientError()) {
+            model.addAttribute("message", "你的请求错了,要不换个姿势?");
         }
-        if(status.is5xxServerError()){
-            model.addAttribute("message","服务器冒烟啦,要不稍后试试~");
+        if (status.is5xxServerError()) {
+            model.addAttribute("message", "服务器冒烟啦,要不稍后试试~");
         }
 
-        return new ModelAndView("errors");
+        return new ModelAndView("error");
     }
 
     private HttpStatus getStatus(HttpServletRequest request) {
@@ -42,8 +42,7 @@ public class CustomizeErrorController implements ErrorController {
         }
         try {
             return HttpStatus.valueOf(statusCode);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }
     }

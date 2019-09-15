@@ -9,8 +9,8 @@
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#bs-example-navbar-collapse-1"
+                        data-toggle="collapse" type="button">
                     <span class="sr-only">码匠社区</span>
                 </button>
                 <a class="navbar-brand" href="/">码匠社区</a>
@@ -20,17 +20,17 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <form class="navbar-form navbar-left">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="搜索问题">
+                        <input class="form-control" placeholder="搜索问题" type="text">
                     </div>
-                    <button type="submit" class="btn btn-default">搜索</button>
+                    <button class="btn btn-default" type="submit">搜索</button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li th:if="${session.user != null}">
                         <a href="/publish">提问</a>
                     </li>
                     <li class="dropdown" th:if="${session.user != null}">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">
+                        <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="#"
+                           role="button">
                             <span th:text="${session.user.getName()}"></span>
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">

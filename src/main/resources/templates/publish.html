@@ -2,43 +2,77 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>发布 - 码匠社区</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="/css/community.css">
-    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/css/community.css" rel="stylesheet">
+    <link href="/img/favicon.ico" rel="icon" type="image/x-icon"/>
 
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/community.js"></script>
 </head>
-<body background="/img/2.jpg">
+<body style="background-color: #EFEFEF">
+<script src="/js/canvas.js"></script>
+
 <div th:insert="~{navigation :: nav}"></div>
 <div class="container-fluid main">
     <div class="row">
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-            <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发起</h2>
+            <h2><span aria-hidden="true" class="glyphicon glyphicon-plus"></span>发起</h2>
             <hr>
             <form action="/publish" method="post">
                 <input hidden="hidden" name="id" th:value="${id}">
+                <!--问题标题-->
                 <div class="form-group">
                     <label for="title">问题标题 (简单扼要) :</label>
-                    <input type="text" class="form-control" th:value="${title}" id="title" name="title" placeholder="问题标题...">
+                    <input autocomplete="off" class="form-control" id="title" name="title" placeholder="问题标题..."
+                           th:value="${title}" type="text">
                 </div>
+                <!--问题补充-->
                 <div class="form-group">
                     <label for="description">问题补充 (必填, 请按照提示) :</label>
-                    <textarea name="description" id="description" th:text="${description}" class="form-control" cols="30" rows="10"></textarea>
+                    <textarea class="form-control" cols="30" id="description" name="description"
+                              rows="10" th:text="${description}"></textarea>
                 </div>
+                <!--添加标签-->
                 <div class="form-group">
                     <label for="tag">添加标签 :</label>
-                    <input type="text" class="form-control" th:value="${tag}" id="tag" name="tag" placeholder="输入标签 以，分隔">
+                    <input autocomplete="off" class="form-control" id="tag" name="tag" placeholder="输入标签 以,分隔"
+                           th:value="${tag}" type="text">
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active" role="presentation"><a aria-controls="home" data-toggle="tab" href="#home"
+                                                                      role="tab">开发语言</a></li>
+                            <li role="presentation"><a aria-controls="profile" data-toggle="tab" href="#profile"
+                                                       role="tab">平台框架</a></li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="home" role="tabpanel">
+                                <span class="label label-info" onclick="selectTag('Java')">
+                                    <span class="glyphicon glyphicon-tags glyphicon-right">Java</span>
+                                </span>
+                            </div>
+                            <div class="tab-pane" id="profile" role="tabpanel">
+                                <span class="label label-info" onclick="selectTag('Spring')">
+                                    <span class="glyphicon glyphicon-tags glyphicon-right">Spring</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
                 <div class="container-fluid main">
                     <div class="row">
-                        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12" >
-                            <div class="alert alert-danger col-lg-12 col-md-12 col-sm-12 col-xs-12" th:text="${error}" th:if="${error != null}"></div>
+                        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                            <div class="alert alert-danger col-lg-12 col-md-12 col-sm-12 col-xs-12" th:if="${error != null}"
+                                 th:text="${error}"></div>
                         </div>
                         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                            <button type="submit" class="btns">发布</button>
+                            <button class="btns" type="submit">发布</button>
                         </div>
                     </div>
                 </div>

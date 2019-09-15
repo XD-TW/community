@@ -1,26 +1,26 @@
 @import url(http://fonts.googleapis.com/css?family=Finger+Paint);
 
-body{
-  margin: 0;
-  padding: 0;
-overflow:hidden;
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
-.init{
-  display: none;
-  
+.init {
+    display: none;
+
 }
 
 /* Mozilla based browsers */
 ::-moz-selection {
-       background-color: #FFA620;
-       color: #fff;
+    background-color: #FFA620;
+    color: #fff;
 }
 
 /* Works in Safari */
 ::selection {
-       background-color: #FFA620;
-       color: #fff;
+    background-color: #FFA620;
+    color: #fff;
 }
 
 .text-sign .text {
@@ -28,22 +28,24 @@ overflow:hidden;
     font-size: 23px;
     margin-left: 47px;
     margin-top: 50px;
-    	-moz-transform:rotate(-5deg);
-	-webkit-transform:rotate(-5deg);
-	-o-transform:rotate(-5deg);
-	-ms-transform:rotate(-5deg);
+    -moz-transform: rotate(-5deg);
+    -webkit-transform: rotate(-5deg);
+    -o-transform: rotate(-5deg);
+    -ms-transform: rotate(-5deg);
 }
-.webkit .sweat.show{
-     top: 90px!important;
+
+.webkit .sweat.show {
+    top: 90px !important;
 }
-.sweat.show{
+
+.sweat.show {
     opacity: 0;
     top: 50px;
-     -webkit-transition: all 1.5s ease-in-out;
-	-moz-transition: all 1.5s ease-in-out;
-	-o-transition: all 1.5s ease-in-out;
-	-ms-transition: all 1.5s ease-in-out;
-	transition: all 1.5s ease-in-out;
+    -webkit-transition: all 1.5s ease-in-out;
+    -moz-transition: all 1.5s ease-in-out;
+    -o-transition: all 1.5s ease-in-out;
+    -ms-transition: all 1.5s ease-in-out;
+    transition: all 1.5s ease-in-out;
 }
 
 .sweat {
@@ -65,8 +67,9 @@ overflow:hidden;
     position: absolute;
     z-index: 300;
     top: 0;
-   right: 20px;
+    right: 20px;
 }
+
 .text-sign {
     background-image: url("../img/texty-sign.png");
     height: 225px;
@@ -77,14 +80,15 @@ overflow:hidden;
     left: 80px;
     font-family: 'Finger Paint', cursive;
 }
-#indicator{
+
+#indicator {
     background-color: #fff;
-     border-radius: 5px;
-       padding: 10px;
-       margin: auto;
-        background-image:  url(../img/load.gif) ;
-        background-repeat: no-repeat;
-        background-position: center;
+    border-radius: 5px;
+    padding: 10px;
+    margin: auto;
+    background-image: url(../img/load.gif);
+    background-repeat: no-repeat;
+    background-position: center;
     top: 0;
     left: 0;
     right: 0;
@@ -94,10 +98,10 @@ overflow:hidden;
     height: 64px;
 }
 
-.sky{
-     background-image:  url(../img/sky-bg.jpg) ;
+.sky {
+    background-image: url(../img/sky-bg.jpg);
 
-      background-repeat: repeat-x;
+    background-repeat: repeat-x;
 }
 
 .ground {
@@ -108,10 +112,11 @@ overflow:hidden;
     top: -190px;
     position: relative;
 }
-.convas{
-     background-color: #FFA620;
-     position: relative;
-      min-height: 991px;
+
+.convas {
+    background-color: #FFA620;
+    position: relative;
+    min-height: 991px;
 
 }
 
@@ -121,6 +126,7 @@ overflow:hidden;
     width: 900px;
     top: -380px;
 }
+
 .mountain {
     background-image: url("../img/mountain.png");
     background-repeat: repeat-x;
@@ -131,12 +137,19 @@ overflow:hidden;
     position: relative;
     z-index: 0;
 }
-.tlinks{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
+
+.tlinks {
+    text-indent: -9999px;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+    overflow: hidden;
+}
 
 .rocks {
     background-image: url("../img/rocks.png");
     height: 455px;
-  left: -100px;
+    left: -100px;
     position: absolute;
     width: 791px;
     top: 0px;
@@ -165,32 +178,36 @@ overflow:hidden;
     top: 35px;
 
 }
-.webkit.worker{
-     left: 190px;
+
+.webkit.worker {
+    left: 190px;
     top: 70px;
 }
+
 .swing {
 
-	  -webkit-transition: all 1.5s ease-in-out;
-	-moz-transition: all 1.5s ease-in-out;
-	-o-transition: all 1.5s ease-in-out;
-	-ms-transition: all 1.5s ease-in-out;
-	transition: all 1.5s ease-in-out;
-	-moz-transform:rotate(40deg);
-	-webkit-transform:rotate(40deg);
-	-o-transform:rotate(40deg);
-	-ms-transform:rotate(40deg);
+    -webkit-transition: all 1.5s ease-in-out;
+    -moz-transition: all 1.5s ease-in-out;
+    -o-transition: all 1.5s ease-in-out;
+    -ms-transition: all 1.5s ease-in-out;
+    transition: all 1.5s ease-in-out;
+    -moz-transform: rotate(40deg);
+    -webkit-transform: rotate(40deg);
+    -o-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
 }
-.webkit.right{
+
+.webkit.right {
     top: 460px;
-     left: 280px;
+    left: 280px;
 }
+
 .right {
-	-moz-transform:rotate(190deg);
-	-webkit-transform:rotate(190deg);
-	-o-transform:rotate(190deg);
-	-ms-transform:rotate(190deg);
-        left: 330px;
+    -moz-transform: rotate(190deg);
+    -webkit-transform: rotate(190deg);
+    -o-transform: rotate(190deg);
+    -ms-transform: rotate(190deg);
+    left: 330px;
     top: 430px;
 }
 
@@ -201,6 +218,7 @@ overflow:hidden;
     position: absolute;
     width: 100%;
 }
+
 .ground-bottom {
     background-image: url("../img/ground-bottom.png");
     background-repeat: no-repeat;
@@ -211,9 +229,8 @@ overflow:hidden;
     width: 160%;
     z-index: 200;
 }
+
 .clouds {
-
-
 
 
     height: 300px;

@@ -18,17 +18,17 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    public void createOrUpdate(User user){
+    public void createOrUpdate(User user) {
         UserExample userExample = new UserExample();
         userExample.createCriteria().andAccountIdEqualTo(user.getAccountId());
 
         List<User> users = userMapper.selectByExample(userExample);
-        if(users.size() == 0){
+        if (users.size() == 0) {
             //插入用户
             user.setGmtCreate(System.currentTimeMillis());
             user.setGmtModified(user.getGmtCreate());
             userMapper.insert(user);
-        }else {
+        } else {
             //修改token,name,avatarUrl,GmtModified
             User dbUser = users.get(0);
             User updateUser = new User();
@@ -39,7 +39,7 @@ public class UserService {
             updateUser.setGmtModified(System.currentTimeMillis());
             UserExample example = new UserExample();
             example.createCriteria().andIdEqualTo(dbUser.getId());
-            userMapper.updateByExampleSelective(updateUser,example);
+            userMapper.updateByExampleSelective(updateUser, example);
         }
     }
 }

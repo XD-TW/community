@@ -25,24 +25,24 @@ public class ProfileController {
 
     @GetMapping("/profile/{action}")
     public String profile(HttpServletRequest request,
-                          @PathVariable(name = "action")String action, Model model,
+                          @PathVariable(name = "action") String action, Model model,
                           @RequestParam(name = "page", defaultValue = "1") Integer page,
-                          @RequestParam(name = "size", defaultValue = "7") Integer size){
+                          @RequestParam(name = "size", defaultValue = "7") Integer size) {
 
-        User user = (User)request.getSession().getAttribute("user");
+        User user = (User) request.getSession().getAttribute("user");
 
-        if(user == null){
+        if (user == null) {
             return "redirect:/";
         }
 
-        if("questions".equals(action)){
-            model.addAttribute("section","questions");
-            model.addAttribute("sectionName","我的发布");
-        }else if("replies".equals(action)){
-            model.addAttribute("section","replies");
-            model.addAttribute("sectionName","最新回复");
+        if ("questions".equals(action)) {
+            model.addAttribute("section", "questions");
+            model.addAttribute("sectionName", "我的发布");
+        } else if ("replies".equals(action)) {
+            model.addAttribute("section", "replies");
+            model.addAttribute("sectionName", "最新回复");
         }
-        PaginationDTO paginationDTO = questionService.list(user.getId(),page,size);
+        PaginationDTO paginationDTO = questionService.list(user.getId(), page, size);
         model.addAttribute("paginationDTO", paginationDTO);
         return "profile";
     }
