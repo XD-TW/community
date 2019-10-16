@@ -25,9 +25,10 @@
                     <button class="btn btn-default" type="submit">搜索</button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li th:if="${session.user != null}">
-                        <a href="/publish">提问</a>
+                    <li th:if="${session.user != null}" class="quizzer">
+                        <a href="/publish" >提问</a>
                     </li>
+                    <li th:if="${session.user != null}"><a href="/profile/replies">通知 <span class="badge" style="margin-top: -2 px;">42</span></a></li>
                     <li class="dropdown" th:if="${session.user != null}">
                         <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="#"
                            role="button">

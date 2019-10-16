@@ -70,8 +70,6 @@ body {
     color: #999;
     font-size: 13px;
     margin-bottom: 15px;
-    display: block;
-
 }
 
 .jumbotron {
@@ -199,5 +197,11 @@ body {
 }
 
 .publish-tag-tab .label-info{
-    margin-right: 10px;
+    margin: 5px 5px;
+    white-space: normal;
+    display: inline-block;
+}
+.media-heading-h5{
+    margin-top: -10px;
+    margin-bottom: 5px;
 }

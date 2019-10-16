@@ -30,12 +30,17 @@
                     </a>
                 </div>
                 <div class="media-body">
-                    <h5 class="media-heading">
-                        <a th:text="${question.title}"></a>
+                    <h5 class="media-heading-h5">
+                        <a th:href="@{'/question/' + ${question.id} }" th:text="${question.title}"></a>
                     </h5>
                     <span class="text-desc"><span th:text="${question.commentCount}"></span> 个回复 • <span
                             th:text="${question.viewCount}"></span> 次浏览 • <span
-                            th:text="${#dates.format(question.gmtCreate,'yyyy-MM-dd HH:mm')}"></span></span>
+                            th:text="${#dates.format(question.gmtCreate,'yyyy-MM-dd HH:mm')}"></span>&nbsp;&nbsp;
+                        <a class="community-menu" th:href="@{'/publish/'+ ${question.id}}"
+                           th:if="${session.user != null && session.user.getId() == question.getCreator()}">
+                        <span aria-hidden="true" class="glyphicon glyphicon-pencil ">编辑</span>
+                    </a>
+                    </span>
                 </div>
             </div>
             <nav aria-label="Page navigation">
