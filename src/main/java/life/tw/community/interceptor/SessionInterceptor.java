@@ -1,23 +1,32 @@
 package life.tw.community.interceptor;
 
+import life.tw.community.dto.TodayDTO;
 import life.tw.community.mapper.UserMapper;
 import life.tw.community.model.User;
 import life.tw.community.model.UserExample;
+import life.tw.community.provider.TodayProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.List;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.Principal;
+import java.util.*;
 
 @Service
 public class SessionInterceptor implements HandlerInterceptor {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private HttpServletRequest request;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
@@ -32,9 +41,12 @@ public class SessionInterceptor implements HandlerInterceptor {
                     if (user.size() != 0) {
                         request.getSession().setAttribute("user", user.get(0));
                     }
+
                     break;
                 }
             }
+        TodayDTO todayDTO = TodayProvider.getHistoryOnToday();
+        request.getSession().setAttribute("todayDTO", todayDTO);
         return true;
     }
 
@@ -47,4 +59,6 @@ public class SessionInterceptor implements HandlerInterceptor {
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
 
     }
+
+
 }
