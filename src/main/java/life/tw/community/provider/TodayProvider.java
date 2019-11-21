@@ -47,6 +47,7 @@ public class TodayProvider {
         BufferedWriter bufferedWriter = null;
 
         //当天的txt
+        //TODO 有缺陷, 会频繁操作IO流, 可以将其存入缓存中, 从缓存读取
         File file = new File(PATH + simpleDateFormat.format(new Date().getTime()) +".txt");
         try {
             if(!file.exists()){
