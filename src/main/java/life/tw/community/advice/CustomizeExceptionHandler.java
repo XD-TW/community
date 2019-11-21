@@ -31,7 +31,6 @@ public class CustomizeExceptionHandler {
             }
 
             try {
-
                 response.setContentType("application/json");
                 response.setCharacterEncoding("utf-8");
                 PrintWriter writer = response.getWriter();

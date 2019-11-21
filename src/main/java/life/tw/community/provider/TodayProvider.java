@@ -4,19 +4,16 @@ package life.tw.community.provider;
 import com.alibaba.fastjson.JSON;
 import life.tw.community.dto.TodayDTO;
 import org.springframework.stereotype.Component;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
+
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.io.BufferedReader;
-import net.sf.json.JSONObject;
 
+import net.sf.json.JSONObject;
+import org.springframework.util.ClassUtils;
 
 
 /**
@@ -30,7 +27,7 @@ public class TodayProvider {
     private static final int DEF_CONN_TIMEOUT = 30000;
     private static final int DEF_READ_TIMEOUT = 30000;
     private static String userAgent =  "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.66 Safari/537.36";
-
+    private static String PATH = "src\\main\\resources\\static\\json\\";
     //配置您申请的KEY
     private static final String APP_KEY ="de9465aa6846910c409d05511e46e67c";
 
@@ -46,12 +43,26 @@ public class TodayProvider {
         params.put("v","1.0");//版本，当前：1.0
         params.put("month",split[0]);//月份，如：10
         params.put("day",split[1]);//日，如：1
+        FileWriter fileWriter = null;
+        BufferedWriter bufferedWriter = null;
 
+        //当天的txt
+        File file = new File(PATH + simpleDateFormat.format(new Date().getTime()) +".txt");
         try {
-            result =net(url, params);
+            if(!file.exists()){
+                //不存在则请求接口获得数据，创建当天的txt并且写入
+                file.createNewFile();
+                result =net(url, params,"GET");
+                fileWriter = new FileWriter(file);
+                bufferedWriter = new BufferedWriter(fileWriter);
+                bufferedWriter.write(result);
+                bufferedWriter.flush();
+            }else {
+                //存在则读取
+                result = readFile(file);
+            }
             JSONObject object = JSONObject.fromObject(result);
             if(object.getInt("error_code")==0){
-                System.out.println();
                 List<TodayDTO> todayDTOS = JSON.parseArray(object.get("result").toString(), TodayDTO.class);
                 return today(todayDTOS);
             }else{
@@ -59,6 +70,14 @@ public class TodayProvider {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            if(bufferedWriter != null){
+                try {
+                    bufferedWriter.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
         return null;
     }
@@ -88,7 +107,13 @@ public class TodayProvider {
 
 
     public static void main(String[] args) {
-        getHistoryOnToday();
+//        getHistoryOnToday();
+
+//        try {
+////            file.createNewFile();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     /**
@@ -98,18 +123,18 @@ public class TodayProvider {
      * @return  网络请求字符串
      * @throws Exception
      */
-    private static String net(String strUrl, Map<String, Object> params) throws Exception {
+    private static String net(String strUrl, Map<String, Object> params, String method) throws Exception{
         HttpURLConnection conn = null;
         BufferedReader reader = null;
         String rs = null;
         try {
-            StringBuffer sb = new StringBuffer();
-            if("GET" ==null || "GET".equals("GET")){
+            StringBuilder sb = new StringBuilder();
+            if(method==null || method.equals("GET")){
                 strUrl = strUrl+"?"+urlencode(params);
             }
             URL url = new URL(strUrl);
             conn = (HttpURLConnection) url.openConnection();
-            if("GET" ==null || "GET".equals("GET")){
+            if(method==null || method.equals("GET")){
                 conn.setRequestMethod("GET");
             }else{
                 conn.setRequestMethod("POST");
@@ -121,12 +146,12 @@ public class TodayProvider {
             conn.setReadTimeout(DEF_READ_TIMEOUT);
             conn.setInstanceFollowRedirects(false);
             conn.connect();
-            if (params!= null && "GET".equals("POST")) {
+            if (params!= null && Objects.equals(method, "POST")) {
                 try {
                     DataOutputStream out = new DataOutputStream(conn.getOutputStream());
                     out.writeBytes(urlencode(params));
                 } catch (Exception e) {
-                    // TODO: handle exception
+                    throw new Exception();
                 }
             }
             InputStream is = conn.getInputStream();
@@ -136,8 +161,8 @@ public class TodayProvider {
                 sb.append(strRead);
             }
             rs = sb.toString();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            throw new Exception();
         } finally {
             if (reader != null) {
                 reader.close();
@@ -174,5 +199,24 @@ public class TodayProvider {
         }
         return todayDTO;
     }
+
+
+    /**
+     * 依据路径读取文件
+     * @param file
+     * @return
+     */
+    private static String readFile(File file){
+        try(FileReader fileReader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+            String line = null;
+            while((line = bufferedReader.readLine()) != null)
+            return line;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
 
