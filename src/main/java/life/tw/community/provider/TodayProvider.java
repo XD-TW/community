@@ -27,7 +27,7 @@ public class TodayProvider {
     private static final int DEF_CONN_TIMEOUT = 30000;
     private static final int DEF_READ_TIMEOUT = 30000;
     private static String userAgent =  "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.66 Safari/537.36";
-    private static String PATH = "src\\main\\resources\\static\\json\\";
+    private static String PATH = "src\\main\\resources\\static\\today\\";
     //配置您申请的KEY
     private static final String APP_KEY ="de9465aa6846910c409d05511e46e67c";
 
